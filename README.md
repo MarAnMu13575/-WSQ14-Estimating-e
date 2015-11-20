@@ -1,42 +1,42 @@
 # -WSQ14-Estimating-e
 #include iostream>
-#include cmath>
+#include iomanip>
 using namespace std;
 
-float fun(float b){
-
-  float x;
-  
-  float R=0.0, Rf=0.0;
-  
-  float factorial =1;
-  
-  
-  for (x=1; x<=b; x++)
-  
-  {
-    factorial= factorial*x;
-    
-    
-    R=R+1/factorial;
-  }
-  Rf=R+1;
-  
-  return Rf;
+double factorial(int x)
+{
+  double resultado = 1.0;
+  for (int i = 1; i <= x; i++)
+      {
+      if (x == 0)
+      return resultado;
+      else
+      resultado = resultado * i;
+      }
+  return resultado;
 }
-int main(){
 
+double calculate_e(int precision)
+{
+  double  resultado1 = 0.0, resultado2 = 1.0;
+  for(int i= 1; i<1000 ; i++)
+    {
+      resultado1 = resultado2;
+      resultado2 = resultado1 + (1/factorial(i));   //euler = (1+(1/factorial of i));
+    }
+    cout << fixed << setprecision(precision) << resultado2 << endl;
+    return resultado1;
+}
+
+int x = 0;
+
+int main(){
   float a;
-  
   cout<<"Calculating e...  "<<endl;
-  
   cout<<"Give me the value "<<endl;
-  
   cin>>a;
-  
-  float factorial= fun (a);
-  
-  cout<<"The constant is "<<factorial<<endl;
-  
+
+  cout<<"The constant is "<<calculate_e(a)<<endl;
   return 0;
 }
+
